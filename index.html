@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TextZuBinärKonvertierer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        /* CSS für den Hintergrundvideo */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; /* Versteckt Scrollleisten */
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1; /* Hinter den anderen Inhalten */
+            object-fit: cover; /* Video an den Bildschirm anpassen */
+        }
+    </style>
+</head>
+<body>
+<!-- Hintergrundvideo -->
+<video autoplay muted loop>
+    <source src="video.mp4" type="video/mp4"> <!-- Stelle sicher, dass der Dateiname korrekt ist -->
+    Ihr Browser unterstützt das Videoformat nicht.
+</video>
+
+<div class="container">
+    <h1>Text-Binär Konverter</h1>
+    <div class="converter">
+        <label for="option">Wähle eine Option:</label>
+        <select id="option" onchange="toggleInputFields()">
+            <option value="textToBinary">Text in Binär umwandeln</option>
+            <option value="binaryToText">Binär in Text umwandeln</option>
+        </select>
+
+        <!-- Eingabefeld für Text zu Binär -->
+        <div id="textInputContainer">
+            <label for="textInput">Text eingeben:</label>
+            <textarea id="textInput" placeholder="Gib hier deinen Text ein..."></textarea>
+        </div>
+
+        <!-- Eingabefeld für Binär zu Text -->
+        <div id="binaryInputContainer" style="display:none;">
+            <label for="binaryInput">Binär eingeben (mit Leerzeichen getrennt):</label>
+            <textarea id="binaryInput" placeholder="Gib hier deine Binärfolge ein..."></textarea>
+        </div>
+
+        <button onclick="convert()">Konvertieren</button>
+
+        <h2>Ergebnis:</h2>
+        <div id="output"></div>
+
+        <!-- Kopieren-Button -->
+        <button id="copyButton" onclick="copyToClipboard()">Text kopieren</button>
+    </div>
+</div>
+</body>
+</html>
+
+
